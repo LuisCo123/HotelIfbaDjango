@@ -1,0 +1,7 @@
+Django~=2.2.4
+djangorestframework
+markdown
+django-filter
+django-cors-headers
+django-admin-rangefilter
+
