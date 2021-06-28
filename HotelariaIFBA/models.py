@@ -25,6 +25,12 @@ TYPE_PERIODO = (
     ('Temporada','Temporada'),
     ('Fora Temporada', 'Fora Temporada'),
 )
+TYPE_FORMA_PAGAMENTO = (
+    ('Cartao_Debito','Cartao_Debito'),
+    ('Cartao_Credito', 'Cartao_Credito'),
+    ('A Vista', 'A Vista'),
+    ('Cheque', 'Cheque'),
+)
 class Empresa(models.Model):
     nome = models.CharField(max_length=30)
     endereco = models.CharField(max_length=90)
@@ -109,7 +115,7 @@ class Reserva(models.Model):
     listaDeServico = models.ForeignKey(ListaDeServico, on_delete=models.CASCADE)
     dataInicio = models.DateField()
     dataFim = models.DateField()
-    formaDePagamento = models.CharField(max_length=30)
+    formaDePagamento = models.CharField( max_length=30, choices=TYPE_FORMA_PAGAMENTO)
     status = models.CharField( max_length=30, choices=TYPE_STATUS)
 
     def __str__(self):
