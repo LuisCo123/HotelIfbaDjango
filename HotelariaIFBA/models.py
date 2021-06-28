@@ -21,6 +21,10 @@ TYPE_STATUS_ALOJAMENTO = (
     ('Disponivel','Disponivel'),
     ('Indisponivel', 'Indisponivel'),
 )
+TYPE_PERIODO = (
+    ('Temporada','Temporada'),
+    ('Fora Temporada', 'Fora Temporada'),
+)
 class Empresa(models.Model):
     nome = models.CharField(max_length=30)
     endereco = models.CharField(max_length=90)
@@ -45,7 +49,7 @@ class TipoServico(models.Model):
     descricao = models.CharField(max_length=60)
     preco = models.IntegerField()
     numPessoas = models.IntegerField()
-    periodo = models.CharField(max_length=60)
+    periodo = models.CharField( max_length=30, choices=TYPE_PERIODO)
 
     def __str__(self):
         return self.nome
