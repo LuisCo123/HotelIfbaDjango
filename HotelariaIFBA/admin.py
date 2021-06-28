@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import *
 from rangefilter.filters import DateRangeFilter
-admin.site.register({ Alojamento, Empresa, ListaDeServico, TipoServico,Empregados })
+admin.site.register({ Alojamento, Empresa, ListaDeServico, TipoServico,Empregados})
 # Register your models here.
 @admin.register(Cliente)
 class ClienteAdmin(admin.ModelAdmin):

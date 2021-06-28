@@ -11,11 +11,17 @@ TYPE_STATUS = (
     ('Em andamento', 'Em andamento'),
     ('Cancelado', 'Cancelado'),
 )
+TYPE_HOTELS = (
+    ('Hotel','Hotel'),
+    ('Pousada', 'Pousada'),
+    ('Sitio', 'Sitio'),
+    ('Hostel', 'Hostel'),
+)
 class Empresa(models.Model):
     nome = models.CharField(max_length=30)
     endereco = models.CharField(max_length=90)
     telefone = models.IntegerField()
-    categoria = models.CharField(max_length=60)
+    categoria = models.CharField( max_length=30, choices=TYPE_HOTELS)
     email = models.CharField(max_length=60)
 
     def __str__(self):
