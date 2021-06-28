@@ -17,6 +17,10 @@ TYPE_HOTELS = (
     ('Sitio', 'Sitio'),
     ('Hostel', 'Hostel'),
 )
+TYPE_STATUS_ALOJAMENTO = (
+    ('Disponivel','Disponivel'),
+    ('Indisponivel', 'Indisponivel'),
+)
 class Empresa(models.Model):
     nome = models.CharField(max_length=30)
     endereco = models.CharField(max_length=90)
@@ -55,7 +59,7 @@ class Alojamento(models.Model):
     empresa = models.ForeignKey(Empresa, on_delete=models.CASCADE)
     numero = models.IntegerField()
     capacidade = models.IntegerField()
-    status = models.CharField(max_length=30)
+    status = models.CharField( max_length=30, choices=TYPE_STATUS_ALOJAMENTO)
     
     def __str__(self):
         return "%s"%self.numero
