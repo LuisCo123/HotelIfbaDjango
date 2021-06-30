@@ -69,6 +69,7 @@ class Alojamento(models.Model):
     empresa = models.ForeignKey(Empresa, on_delete=models.CASCADE)
     numero = models.IntegerField()
     capacidade = models.IntegerField()
+    descricao = models.CharField( max_length=30)
     status = models.CharField( max_length=30, choices=TYPE_STATUS_ALOJAMENTO)
     diaria = models.IntegerField(blank=True, null=True)
     foto = models.FileField(blank=True, null=True, upload_to="HotelariaIFBA/roomImages/")

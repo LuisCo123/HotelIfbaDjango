@@ -13,7 +13,7 @@ class ReservaAdmin(admin.ModelAdmin):
     list_filter = (('dataInicio',  DateRangeFilter),('dataFim',  DateRangeFilter),("status"),)
 @admin.register(Alojamento)
 class AlojamentoAdmin(admin.ModelAdmin):
-    list_display = ('numero', 'empresa', 'capacidade','status','diaria',)
+    list_display = ('numero','descricao', 'empresa', 'capacidade','status','diaria',)
 @admin.register(ServicosUtilizados)
 class ServicosUtilizadosAdmin(admin.ModelAdmin):
     list_display = ('reserva', 'servico',)
