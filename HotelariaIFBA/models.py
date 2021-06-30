@@ -53,7 +53,7 @@ class Empregados(models.Model):
 class TipoServico(models.Model):
     nome = models.CharField(max_length=30)
     descricao = models.CharField(max_length=60)
-    preco = models.IntegerField()
+    preco = models.FloatField()
     numPessoas = models.IntegerField()
     periodo = models.CharField( max_length=30, choices=TYPE_PERIODO)
 
@@ -71,7 +71,7 @@ class Alojamento(models.Model):
     capacidade = models.IntegerField()
     descricao = models.CharField( max_length=30)
     status = models.CharField( max_length=30, choices=TYPE_STATUS_ALOJAMENTO)
-    diaria = models.IntegerField(blank=True, null=True)
+    diaria = models.FloatField(blank=True, null=True)
     foto = models.FileField(blank=True, null=True, upload_to="HotelariaIFBA/roomImages/")
     def __str__(self):
         return "%s"%self.numero
