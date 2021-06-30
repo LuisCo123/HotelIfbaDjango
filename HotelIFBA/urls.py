@@ -17,6 +17,8 @@ from django.contrib import admin
 from django.urls import path,include
 from rest_framework import routers
 from HotelariaIFBA.api import viewsets
+from django.conf.urls.static import static
+from django.conf import settings
 # Empresa, ListaDeServico, TipoServico,Empregados,
 # Cliente,Reserva,Alojamento,ServicosUtilizados
 
@@ -35,3 +37,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
