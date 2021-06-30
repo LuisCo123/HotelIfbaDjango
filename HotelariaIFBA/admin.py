@@ -12,5 +12,8 @@ class ReservaAdmin(admin.ModelAdmin):
     list_display = ('id','cliente', 'alojamento', 'dataInicio', 'dataFim', 'status')
     list_filter = (('dataInicio',  DateRangeFilter),('dataFim',  DateRangeFilter),("status"),)
 @admin.register(Alojamento)
-class ReservaAdmin(admin.ModelAdmin):
+class AlojamentoAdmin(admin.ModelAdmin):
     list_display = ('numero', 'empresa', 'capacidade','status',)
+@admin.register(ServicosUtilizados)
+class ServicosUtilizadosAdmin(admin.ModelAdmin):
+    list_display = ('reserva', 'servico',)

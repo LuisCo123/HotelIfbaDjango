@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'HotelariaIFBA',
     'rangefilter',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
