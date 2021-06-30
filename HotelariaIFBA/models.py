@@ -70,7 +70,7 @@ class Alojamento(models.Model):
     numero = models.IntegerField()
     capacidade = models.IntegerField()
     status = models.CharField( max_length=30, choices=TYPE_STATUS_ALOJAMENTO)
-    diaria = models.IntegerField(blank=True, null=True)
+    diaria = models.IntegerField()
     foto = models.FileField(blank=True, null=True)
     def __str__(self):
         return "%s"%self.numero
