@@ -59,7 +59,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.BrokenLinkEmailsMiddleware',
-    
+    'rest_framework_simplejwt.authentication.JWTAuthentication',
 ]
 CORS_ORIGIN_ALLOW_ALL = True
 ROOT_URLCONF = 'HotelIFBA.urls'

@@ -5,3 +5,4 @@ django-filter
 django-cors-headers
 django-admin-rangefilter
 django-cors-headers
+djangorestframework-simplejwt
