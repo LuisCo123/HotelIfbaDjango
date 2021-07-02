@@ -11,8 +11,8 @@ class EmpresaSerializer(serializers.ModelSerializer):
         model = models.Empresa
         fields = '__all__'
 class ListaDeServicoSerializer(serializers.ModelSerializer):
-    servico = serializers.CharField()
-    empresa = serializers.CharField()
+    # servico = serializers.CharField()
+    # empresa = serializers.CharField()
     class Meta:
         model = models.ListaDeServico
         fields = '__all__'
@@ -21,7 +21,7 @@ class TipoServicoSerializer(serializers.ModelSerializer):
         model = models.TipoServico
         fields = '__all__'
 class EmpregadosSerializer(serializers.ModelSerializer):
-    empresa = serializers.CharField()
+    # empresa = serializers.CharField()
 
     class Meta:
         model = models.Empregados
@@ -31,20 +31,20 @@ class ClienteSerializer(serializers.ModelSerializer):
         model = models.Cliente
         fields = '__all__'
 class ReservaSerializer(serializers.ModelSerializer):
-    cliente = serializers.CharField()
-    alojamento = serializers.CharField()
+    # cliente = serializers.CharField()
+    # alojamento = serializers.CharField()
     servico = serializers.CharField()
     class Meta:
         model = models.Reserva
         fields = '__all__'
 class AlojamentoSerializer(serializers.ModelSerializer):
-    empresa = serializers.CharField()
+    # empresa = serializers.CharField()
     class Meta:
         model = models.Alojamento
         fields = '__all__'
 class ServicosUtilizadosSerializer(serializers.ModelSerializer):
-    servico = serializers.CharField()
-    reserva = serializers.CharField()
+    # servico = serializers.RelatedField(source='tiposervicoutilizado',read_only=True)
+    # reserva = serializers.CharField()
     class Meta:
         model = models.ServicosUtilizados
         fields = '__all__'

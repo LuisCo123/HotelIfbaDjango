@@ -52,7 +52,7 @@ class Empregados(models.Model):
         return self.nome
 
 class TipoServico(models.Model):
-    servico = models.CharField(max_length=30)
+    servico = models.CharField(max_length=30,)
     descricao = models.CharField(max_length=60)
     preco = models.FloatField()
     numPessoas = models.IntegerField()
@@ -128,4 +128,3 @@ class ServicosUtilizados(models.Model):
     servico = models.ForeignKey(ListaDeServico, on_delete=models.CASCADE)
     reserva = models.ForeignKey(Reserva, on_delete=models.CASCADE)
     data = models.DateField()
-
