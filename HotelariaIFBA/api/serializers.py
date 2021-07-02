@@ -33,7 +33,7 @@ class ClienteSerializer(serializers.ModelSerializer):
 class ReservaSerializer(serializers.ModelSerializer):
     # cliente = serializers.CharField()
     # alojamento = serializers.CharField()
-    servico = serializers.CharField()
+    # servico = serializers.CharField()
     class Meta:
         model = models.Reserva
         fields = '__all__'

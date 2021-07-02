@@ -78,7 +78,7 @@ class Alojamento(models.Model):
         return "%s"%self.alojamento
 
 class Cliente(models.Model):
-    cliente = models.CharField(max_length=30)
+    nome = models.CharField(max_length=30)
     nacionalidade = models.CharField( max_length=50)
     dataDeNascimento = models.DateField()
     endereco = models.CharField(max_length=60)
@@ -92,10 +92,10 @@ class Cliente(models.Model):
         if(self.pk is None):
             if( self.email != ""):
                 new_password = User.objects.make_random_password()
-                self.usuario = User.objects.create_user(username=self.cliente, email=self.email, password=new_password)
+                self.usuario = User.objects.create_user(username=self.nome, email=self.email, password=new_password)
                 try:
                     send_mail(
-                    'Olá ' + self.cliente,
+                    'Olá ' + self.nome,
                     'sua senha da hotelaria ifba é :' + new_password,
                     'HotelIFBATeste@gmail.com',
                     [self.email],
@@ -109,7 +109,7 @@ class Cliente(models.Model):
         super().save(*args, **kwargs)  # Call the "real" save() method.
 
     def __str__(self):
-        return self.cliente 
+        return self.nome 
 
 
 class Reserva(models.Model):
