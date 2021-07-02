@@ -32,7 +32,7 @@ router.register(r'cliente', viewsets.ClienteViewSet)
 router.register(r'reserva', viewsets.ReservaViewSet)
 router.register(r'alojamento', viewsets.AlojamentoViewSet)
 router.register(r'servicosutilizados', viewsets.ServicosUtilizadosViewSet)
-
+router.register(r'users', viewsets.UserViewSet)
 urlpatterns = [
     path('', include(router.urls)),
     path('admin/', admin.site.urls),
