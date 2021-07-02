@@ -5,7 +5,7 @@ admin.site.register({ Empresa, ListaDeServico, TipoServico,Empregados})
 # Register your models here.
 @admin.register(Cliente)
 class ClienteAdmin(admin.ModelAdmin):
-    list_display = ('nome', 'email', 'telefone', 'rg')
+    list_display = ('cliente', 'email', 'telefone', 'rg')
 
 @admin.register(Reserva)
 class ReservaAdmin(admin.ModelAdmin):
@@ -13,7 +13,7 @@ class ReservaAdmin(admin.ModelAdmin):
     list_filter = (('dataInicio',  DateRangeFilter),('dataFim',  DateRangeFilter),("status"),)
 @admin.register(Alojamento)
 class AlojamentoAdmin(admin.ModelAdmin):
-    list_display = ('numero','descricao', 'empresa', 'capacidade','status','diaria',)
+    list_display = ('alojamento','descricao', 'empresa', 'capacidade','status','diaria',)
 @admin.register(ServicosUtilizados)
 class ServicosUtilizadosAdmin(admin.ModelAdmin):
     list_display = ('reserva', 'servico',)
