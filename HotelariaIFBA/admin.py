@@ -5,7 +5,7 @@ admin.site.register({ Empresa, ListaDeServico, TipoServico,Empregados})
 # Register your models here.
 @admin.register(Cliente)
 class ClienteAdmin(admin.ModelAdmin):
-    list_display = ('cliente', 'email', 'telefone', 'rg')
+    list_display = ('nome', 'email', 'telefone', 'rg')
 
 @admin.register(Reserva)
 class ReservaAdmin(admin.ModelAdmin):
