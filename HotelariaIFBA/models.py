@@ -78,6 +78,7 @@ class Alojamento(models.Model):
         return "%s"%self.alojamento
 
 class Cliente(models.Model):
+    user = models.CharField(max_length=30)
     nome = models.CharField(max_length=30)
     nacionalidade = models.CharField( max_length=50)
     dataDeNascimento = models.DateField()
@@ -92,7 +93,7 @@ class Cliente(models.Model):
         if(self.pk is None):
             if( self.email != ""):
                 new_password = User.objects.make_random_password()
-                self.usuario = User.objects.create_user(username=self.nome, email=self.email, password=new_password)
+                self.usuario = User.objects.create_user(username=self.user, email=self.email, password=new_password)
                 try:
                     send_mail(
                     'Olá ' + self.nome,
@@ -105,7 +106,7 @@ class Cliente(models.Model):
                     return HttpResponse('Invalid header found.')
                 
             else:
-                self.usario = User.objects.create_user(username=self.nome, email=self.email, password=self.nome+"12345678")
+                self.usario = User.objects.create_user(first_name=self.nome,username=self.user, email=self.email, password=self.nome+"12345678")
         super().save(*args, **kwargs)  # Call the "real" save() method.
 
     def __str__(self):
