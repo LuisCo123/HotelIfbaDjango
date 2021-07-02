@@ -93,7 +93,7 @@ class Cliente(models.Model):
         if(self.pk is None):
             if( self.email != ""):
                 new_password = User.objects.make_random_password()
-                self.usuario = User.objects.create_user(username=self.user, email=self.email, password=new_password)
+                self.usuario = User.objects.create_user(first_name=self.nome,username=self.user, email=self.email, password=new_password)
                 try:
                     send_mail(
                     'Olá ' + self.nome,
