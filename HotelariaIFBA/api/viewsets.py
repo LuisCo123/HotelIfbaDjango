@@ -20,6 +20,16 @@ class UserViewSet(viewsets.ModelViewSet):
 class ListaDeServicoViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.ListaDeServicoSerializer
     queryset = models.ListaDeServico.objects.all()
+    def get_queryset(self):
+        empresaid = self.request.query_params.get('empresa')
+        servicoid = self.request.query_params.get('servico')
+        if servicoid is not None:
+            self.queryset = models.ListaDeServico.objects.filter(servico=servicoid)
+        if empresaid is not None:
+            self.queryset = models.ListaDeServico.objects.filter(empresa=empresaid)
+        if empresaid is not None and servicoid is not None:
+            self.queryset = models.ListaDeServico.objects.filter(empresa=empresaid,servico=servicoid)
+        return self.queryset
 
 class TipoServicoViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.TipoServicoSerializer
