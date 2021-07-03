@@ -41,6 +41,11 @@ class ClienteViewSet(viewsets.ModelViewSet):
 class ReservaViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.ReservaSerializer
     queryset = models.Reserva.objects.all()
+    def get_queryset(self):
+        clienteid = self.request.query_params.get('cliente')
+        if clienteid is not None:
+            self.queryset = models.Reserva.objects.filter(cliente=clienteid)
+        return self.queryset
 
 class AlojamentoViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.AlojamentoSerializer
