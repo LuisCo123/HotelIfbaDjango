@@ -50,6 +50,11 @@ class ReservaViewSet(viewsets.ModelViewSet):
 class AlojamentoViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.AlojamentoSerializer
     queryset = models.Alojamento.objects.all()
+    def get_queryset(self):
+        empresaid = self.request.query_params.get('empresa')
+        if empresaid is not None:
+            self.queryset = models.Alojamento.objects.filter(empresa=empresaid)
+        return self.queryset
 
 class ServicosUtilizadosViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.ServicosUtilizadosSerializer
