@@ -32,6 +32,11 @@ class EmpregadosViewSet(viewsets.ModelViewSet):
 class ClienteViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.ClienteSerializer
     queryset = models.Cliente.objects.all()
+    def get_queryset(self):
+        username = self.request.query_params.get('user')
+        if username is not None:
+            self.queryset = models.Cliente.objects.filter(user=username)
+        return self.queryset
 
 class ReservaViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.ReservaSerializer
