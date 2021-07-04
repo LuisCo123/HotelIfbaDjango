@@ -5,6 +5,7 @@ from django.utils import timezone
 from django.core.mail import BadHeaderError, send_mail
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.models import User
+from django.contrib.auth.models import Group
 
 TYPE_STATUS = (
     ('Reservado','Reservado'),
@@ -93,7 +94,11 @@ class Cliente(models.Model):
         if(self.pk is None):
             if( self.email != ""):
                 new_password = User.objects.make_random_password()
-                self.usuario = User.objects.create_user(first_name=self.nome,username=self.user, email=self.email, password=new_password)
+                self.usuario = User.objects.create_user(username=self.user, email=self.email, password=new_password)
+                self.usuario.first_name = self.nome
+                group = Group.objects.get(name='Cliente')
+                group.user_set.add(self.usuario)
+                self.usuario.save()
                 try:
                     send_mail(
                     'Olá ' + self.nome,
@@ -106,7 +111,8 @@ class Cliente(models.Model):
                     return HttpResponse('Invalid header found.')
                 
             else:
-                self.usario = User.objects.create_user(first_name=self.nome,username=self.user, email=self.email, password=self.nome+"12345678")
+                self.usuario = User.objects.create_user(username=self.user, email=self.email, password=self.nome+"12345678")
+                self.usuario.first_name = self.nome
         super().save(*args, **kwargs)  # Call the "real" save() method.
 
     def __str__(self):
